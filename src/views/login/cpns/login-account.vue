@@ -22,8 +22,8 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const account = reactive({
-      name: '',
-      password: ''
+      name: localCache.getCache('name') ?? '',
+      password: localCache.getCache('password') ?? ''
     })
 
     const formRef = ref<InstanceType<typeof ElForm>>()
@@ -42,7 +42,7 @@ export default defineComponent({
           }
 
           // 2.开始进行登录验证
-          store.dispatch('login/accountLoginAction', { ...account })
+          store.dispatch('loginModule/accountLoginAction', { ...account })
         }
       })
     }
