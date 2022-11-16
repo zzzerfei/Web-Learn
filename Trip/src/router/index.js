@@ -22,7 +22,22 @@ const router = createRouter({
     {
       path: "/message",
       component: () => import("../views/message/index.vue"),
-    }
+    },
+    {
+      path: "/city",
+      component: () => import("../views/city/index.vue"),
+    },
+    {
+      path: "/search",
+      component: () => import("../views/search/index.vue"),
+      meta: {
+        hideTabBar: true, // 是否隐藏首页的tabbar; 默认为 false
+      },
+    },
+    {
+      path: "/detail/:id",
+      component: () => import("../views/detail/index.vue"),
+    },
   ]
 })
 

@@ -7,11 +7,13 @@
           :key="index"
           v-if="item.discoveryContentType === 3"
           :item-data="item.data"
+          @click="itemClick(item.data.houseId)"
         />
         <house-item-v2
           v-else-if="item.discoveryContentType === 9"
           :item-data="item.data"
           :key="item.cityId"
+          @click="itemClick(item.data.houseId)"
         />
       </template>
     </div>
@@ -20,12 +22,24 @@
 <script setup>
 import HouseItemV1 from "@/components/house-item-v1/index.vue";
 import HouseItemV2 from "@/components/house-item-v2/index.vue";
+
+import { useRouter } from "vue-router";
+const router = useRouter();
+
 defineProps({
   houselist: {
     type: Array,
     default: () => [],
   },
 });
+
+// 监听点击
+function itemClick(houseId) {
+  console.log("itemClick", houseId);
+  router.push({
+    path: "/detail/" + houseId,
+  });
+}
 </script>
 <style lang="less" scoped>
 .house-area {

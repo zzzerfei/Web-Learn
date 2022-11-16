@@ -2,8 +2,7 @@
   <div class="search-box">
     <div class="item location bottom-gray-line">
       <div class="city" @click="cityItemClick">
-        <!-- {{ cityStore.currentCity.cityName }} -->
-        广州
+        {{ cityStore.currentCity.cityName }}
       </div>
       <div class="current">
         <span class="mine">我的位置</span>
@@ -43,6 +42,7 @@
   </div>
 </template>
 <script setup>
+import useCityStore from "@/stores/modules/city";
 import { useRouter } from "vue-router";
 defineProps({
   hotSuggests: {
@@ -68,6 +68,7 @@ const cityItemClick = () => {
     path: "/city",
   });
 };
+const cityStore = useCityStore();
 </script>
 
 <style lang="less" scoped>

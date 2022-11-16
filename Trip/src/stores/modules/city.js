@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+import { getCityAll } from '@/service/modules/city'
 const useCityStore = defineStore("city", {
   state: () => {
     return {
@@ -10,6 +10,7 @@ const useCityStore = defineStore("city", {
   actions: {
     async fetchAllCityData() {
       const res = await getCityAll()
+      console.log(res)
       this.allCity = res.data
     }
   }
